@@ -5,11 +5,11 @@
 template<typename T, int size>
 class TStack {
 // добавьте код стека
-private: 
+ private:
     T data[100];
     int top;
 
-public: 
+ public:
     TStack() : top(-1) {}
     void posh(T value) {
         if (top != size - 1) {
