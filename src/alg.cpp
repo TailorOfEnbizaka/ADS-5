@@ -10,66 +10,59 @@ int prior_op(char str) {
 }
 std::string infx2pstfx(std::string inf) {
   // добавьте код
-  return std::string("");
-  std::string post_str;
+return std::string("");
+std::string post_str;
 TStack<char, 100> stack;
-for (char str : inf) {
-	if (isdigit(str)) {
-		post_str += str;
-		post_str += ' ';
-	}
-	else if (str == '+' || str == '-' || str == '*' || str == '/') {
-		while (!stack.Empty()) {
-			if (prior_op(stack.get()) >= prior_op(str)) {
-				post_str += stack.get();
-				post_str += ' ';
-				stack.pop();
-			}
+for (int i = 0; inf[i] != '\0'; i++) {
+	if (inf[i] == '+' || inf[i] == '-' || inf[i] == '*' || inf[i] == '/') {
+		while (!stack.empty() && prior_op(stack.got()) >= prior_op(inf[i])) {
+			post_str = post_str + stack.got() + ' ';
+			stack.pop();
 		}
-		stack.posh(str);
+		stack.posh(inf[i]);
 	}
-	else if(str=='(')
-		stack.posh(str);
-	else if (str == ')') {
-		while (!stack.Empty() && stack.get() != '(') {
-			post_str += stack.get();
-			post_str += ' ';
+	else if (isdigit(inf[i])) {
+		post_str = post_str + inf[i] + ' ';
+	}
+	else if (inf[i] == '(') {
+		stack.posh(inf[i]);
+	}
+	 
+	else if (inf[i] == ')') {
+		while (!stack.empty() && stack.got() != '(') {
+			post_str = post_str + stack.got() + ' ';
 			stack.pop();
 		}
 		stack.pop();
 	}
 }
-while (!stack.Empty()) {
-	post_str += stack.get();
-	post_str += ' ';
+while (!stack.empty()) {
+	post_str = post_str + stack.got() + ' ';
 	stack.pop();
-}
-if (!post_str.empty()) {
-	post_str.pop_back();
 }
 return post_str;
 }
 
 int eval(std::string post) {
   // добавьте код
-  TStack <int, 100> stack;
-int a, b;
-for (char str:post) {
-	if (std::isdigit(str))
-		stack.posh(str);
-	else if (str == '+' || str == '-' || str == '*' || str == '/') {
-		a = stack.pop();
-		b = stack.pop();
-		if (str == '+')
+  TStack<int, 100> stack;
+for (int i = 0; post[i] != '\0'; i++) {
+	if (std::isdigit(post[i])) {
+		stack.posh(post[i] - '0');
+	}
+	else if (post[i] == '+' || post[i] == '-' || post[i] == '*' || post[i] == '/') {
+		int b = stack.pop();
+		int a = stack.pop();
+		if (post[i] == '+')
 			stack.posh(a + b);
-		else if (str == '-')
+		else if (post[i] == '-')
 			stack.posh(a - b);
-		else if (str == '*')
+		else if (post[i] == '*')
 			stack.posh(a * b);
-		else if (str == '/')
+		else if (post[i] == '/')
 			stack.posh(a / b);
-		}
+	}
 }
 return stack.pop();
-  return 0;
+return 0
 }
