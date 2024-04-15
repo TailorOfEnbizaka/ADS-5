@@ -5,10 +5,11 @@
 template<typename T, int size>
 class TStack {
 // добавьте код стека
-private:
+private: 
     T data[100];
     int top;
-public:
+
+public: 
     TStack() : top(-1) {}
     void posh(T value) {
         if (top != size - 1) {
@@ -26,8 +27,7 @@ public:
     T pop() {
         if (empty()) {
             throw std::string("Empty");
-        }
-        else {
+        } else {
         return data[top--];
         }
     }
