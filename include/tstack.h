@@ -8,9 +8,7 @@ private:
   T data[size];
   int top;
 public:
-  TStack() {
-    top(0);
-  }
+  TStack() : top(0) {}
   void posh(const T& item) {
     if (top <= size - 1)
       data[top++] = item;
@@ -18,14 +16,15 @@ public:
       throw std::string("Full!");
   }
   T get() const {
-    return data[top_index];
+    return data[top];
   }
   T pop() {
     if (top > 0)
       return data[--top];
     throw std::string("Empty");
   }
-  bool Empty()
-    return top_index == -1;
+  bool Empty() {
+    return top == -1;
+  }
 };
 #endif  // INCLUDE_TSTACK_H_
