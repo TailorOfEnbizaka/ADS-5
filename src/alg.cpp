@@ -21,8 +21,7 @@ for (int i = 0; inf[i] != '\0'; i++) {
 		stack.posh(inf[i]);
 	}
 	else if (isdigit(inf[i])) {
-		post_str+=' ';
-		post_str+=inf[i];
+		post_str = post_str + inf[i] + ' ';
 	}
 	else if (inf[i] == '(') {
 		stack.posh(inf[i]);
