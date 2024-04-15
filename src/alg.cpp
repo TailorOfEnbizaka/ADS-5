@@ -10,13 +10,13 @@ int prior_op(char str) {
 }
 int summa(int a, int b, char str) {
 	if (str == '+')
-		return a + b;
+		return (a + b);
 	else if (str == '-')
-		return a - b;
+		return (a - b);
 	else if (str == '*')
-		return a * b;
+		return (a * b);
 	else if (str == '/')
-		return a / b;
+		return (a / b);
 }
 std::string infx2pstfx(std::string inf) {
   // добавьте код
