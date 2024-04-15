@@ -64,5 +64,5 @@ for (int i = 0; post[i] != '\0'; i++) {
 	}
 }
 return stack.pop();
-return 0
+return 0;
 }
