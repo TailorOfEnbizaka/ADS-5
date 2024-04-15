@@ -15,13 +15,15 @@ TStack<char, 100> stack;
 for (int i = 0; inf[i] != '\0'; i++) {
 	if (inf[i] == '+' || inf[i] == '-' || inf[i] == '*' || inf[i] == '/') {
 		while (!stack.empty() && prior_op(stack.got()) >= prior_op(inf[i])) {
-			post_str = post_str + stack.got() + ' ';
+			post_str+=' ';
+			post_str+=stack.got();
 			stack.pop();
 		}
 		stack.posh(inf[i]);
 	}
 	else if (isdigit(inf[i])) {
-		post_str = post_str + inf[i] + ' ';
+		post_str+=' ';
+		post_str+=inf[i];
 	}
 	else if (inf[i] == '(') {
 		stack.posh(inf[i]);
@@ -29,14 +31,16 @@ for (int i = 0; inf[i] != '\0'; i++) {
 	 
 	else if (inf[i] == ')') {
 		while (!stack.empty() && stack.got() != '(') {
-			post_str = post_str + stack.got() + ' ';
+			post_str+=' ';
+			post_str+=stack.got();
 			stack.pop();
 		}
 		stack.pop();
 	}
 }
 while (!stack.empty()) {
-	post_str = post_str + stack.got() + ' ';
+	post_str+=' ';
+	post_str+=stack.got();
 	stack.pop();
 }
 return post_str;
