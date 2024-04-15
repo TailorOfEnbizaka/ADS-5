@@ -10,7 +10,6 @@ int prior_op(char str) {
 }
 std::string infx2pstfx(std::string inf) {
   // добавьте код
-return std::string("");
 std::string post_str;
 TStack<char, 100> stack;
 for (int i = 0; inf[i] != '\0'; i++) {
