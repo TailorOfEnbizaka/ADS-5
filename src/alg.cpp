@@ -43,6 +43,7 @@ while (!stack.empty()) {
 	post_str+=stack.got();
 	stack.pop();
 }
+	post_str.pop_back();
 return post_str;
 }
 
