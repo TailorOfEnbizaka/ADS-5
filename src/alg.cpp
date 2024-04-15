@@ -10,10 +10,11 @@ int prior_op(char str) {
 }
 std::string infx2pstfx(std::string inf) {
   // добавьте код
-TStack<char, 100> stack;
-std::string post_str;
-for (int i = 0; inf[i] != '\0'; i++) {
-  if (inf[i] == '+' || inf[i] == '-' || inf[i] == '*' || inf[i] == '/') {
+  TStack<char, 100> stack;
+  std::string post_str;
+  for (int i = 0; inf[i] != '\0'; i++) {
+    if (inf[i] == '+' || inf[i] == '-' || 
+    inf[i] == '*' || inf[i] == '/') {
       while (!stack.empty() && prior_op(stack.got()) >= prior_op(inf[i])) {
                post_str = post_str + stack.got() + ' ';
                stack.pop();
