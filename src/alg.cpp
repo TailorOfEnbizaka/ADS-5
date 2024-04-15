@@ -8,16 +8,6 @@ int prior_op(char str) {
 		return 2;
 	return 0;
 }
-int summa(int a, int b, char str) {
-	if (str == '+')
-		return (a + b);
-	else if (str == '-')
-		return (a - b);
-	else if (str == '*')
-		return (a * b);
-	else if (str == '/')
-		return (a / b);
-}
 std::string infx2pstfx(std::string inf) {
   // добавьте код
   return std::string("");
@@ -70,8 +60,15 @@ for (char str:post) {
 	else if (str == '+' || str == '-' || str == '*' || str == '/') {
 		a = stack.pop();
 		b = stack.pop();
-		stack.posh(summa(a, b, str));
-	}
+		if (str == '+')
+			stack.posh(a + b);
+		else if (str == '-')
+			stack.posh(a - b);
+		else if (str == '*')
+			stack.posh(a * b);
+		else if (str == '/')
+			stack.posh(a / b);
+		}
 }
 return stack.pop();
   return 0;
