@@ -13,7 +13,7 @@ std::string infx2pstfx(std::string inf) {
   TStack<char, 100> stack;
   std::string post_str;
   for (int i = 0; inf[i] != '\0'; i++) {
-    if (inf[i] == '+' || inf[i] == '-' || 
+    if (inf[i] == '+' || inf[i] == '-' ||
     inf[i] == '*' || inf[i] == '/') {
       while (!stack.empty() && prior_op(stack.got()) >= prior_op(inf[i])) {
                post_str = post_str + stack.got() + ' ';
@@ -45,7 +45,8 @@ int eval(std::string post) {
 for (int i = 0; post[i] != '\0'; i++) {
   if (std::isdigit(post[i])) {
                 stack.posh(post[i] - '0');
-  } else if (post[i] == '+' || post[i] == '-' || post[i] == '*' || post[i] == '/') {
+  } else if (post[i] == '+' || post[i] == '-' ||
+          post[i] == '*' || post[i] == '/') {
                 int b = stack.pop();
                 int a = stack.pop();
                 if (post[i] == '+')
