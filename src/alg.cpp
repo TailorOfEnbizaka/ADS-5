@@ -60,7 +60,7 @@ if (!post_str.empty()) {
 return post_str;
 }
 
-int eval(std::string pref) {
+int eval(std::string post) {
   // добавьте код
   TStack <int, 100> stack;
 int a, b;
