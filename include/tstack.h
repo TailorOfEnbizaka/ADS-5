@@ -4,27 +4,33 @@
 #include <string>
 template<typename T, int size>
 class TStack {
+	// добавьте код стека
 private:
-  T data[size];
-  int top;
+	T data[100];
+	int top;
 public:
-  TStack() : top(0) {}
-  void posh(const T& item) {
-    if (top <= size - 1)
-      data[top++] = item;
-    else
-      throw std::string("Full!");
-  }
-  T get() const {
-    return data[top];
-  }
-  T pop() {
-    if (top > 0)
-      return data[--top];
-    throw std::string("Empty");
-  }
-  bool Empty() {
-    return top == -1;
-  }
+	TStack() : top(-1) {}
+	void posh(T value) {
+		if (top != size - 1) {
+			data[++top] = value;
+		}
+		else {
+			throw std::string("Full");
+		}
+	}
+	bool empty() {
+		return top == -1;
+	}
+	T got() const {
+		return data[top];
+	}
+	T pop() {
+		if (empty()) {
+			throw std::string("Empty");
+		}
+		else {
+			return data[top--];
+		}
+	}
 };
 #endif  // INCLUDE_TSTACK_H_
